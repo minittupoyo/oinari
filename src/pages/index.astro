@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import { getPosts } from "../lib/blog";
+import { Image } from "astro:assets";
+import BlogPost from "../components/BlogPost.astro";
+
+const posts = await getPosts();
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 6);
+---
+
+<Layout>
+  <section class="flex flex-col items-center justify-center space-y-6 py-64">
+    <p class="font-medium text-purple-500">Nuxt to Astro!!</p>
+    <h2 class="text-6xl font-bold">minittu</h2>
+    <p class="text-xl tracking-wide text-zinc-700">みにっつの超個人用忘備録</p>
+    <div class="flex flex-row gap-8">
+      <a
+        href="/blog"
+        class="flex flex-row items-center gap-1 rounded-full bg-purple-500 px-4 py-2 text-lg text-white"
+      >
+        <Icon name="tabler:news" />
+        <span>ブログを見る</span>
+      </a>
+      <a
+        href="/about"
+        class="flex flex-row items-center gap-1 px-4 py-2 text-base text-zinc-700"
+      >
+        <Icon name="tabler:user" />
+        <span>About</span>
+      </a>
+    </div>
+  </section>
+  <section class="flex flex-col border-t border-zinc-100 py-8">
+    <div class="flex flex-row items-center justify-between">
+      <h2 class="text-2xl font-bold">最近の記事</h2>
+      <a
+        href="/blog"
+        class="group flex flex-row items-center gap-1 text-zinc-700"
+      >
+        <span>すべての記事</span>
+        <Icon
+          name="tabler:chevron-right"
+          class="transition duration-300 group-hover:translate-x-1"
+        />
+      </a>
+    </div>
+    <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      {
+        posts.map((post) => (
+          <BlogPost post={post} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>
