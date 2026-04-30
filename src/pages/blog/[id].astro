@@ -24,7 +24,7 @@ const { prev, next } = getPrevNextById(posts, post.id);
 const { Content, headings } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={post.data.title} description={post.data.description} isArticle ogImage={new URL(`/og/${post.id}.png`, Astro.site).toString()}>
   <section class="flex flex-col space-y-4 py-8">
     <p class="text-sm text-zinc-500">
       {post.data.date.toLocaleDateString("ja-JP")}

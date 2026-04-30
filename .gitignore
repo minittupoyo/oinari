@@ -24,3 +24,4 @@ pnpm-debug.log*
 .idea/
 
 public/remark-link-card-plus
+.wrangler/**

@@ -10,10 +10,12 @@ import icon from "astro-icon";
 
 import expressiveCode from "astro-expressive-code";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), expressiveCode()],
-
+  integrations: [icon(), expressiveCode(), react()],
+  site: "https://blog.minittu.net",
   vite: {
     plugins: [tailwindcss()],
   },

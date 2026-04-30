@@ -8,9 +8,17 @@ import { SEO } from "astro-seo";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  isArticle?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage, isArticle } = Astro.props;
+
+const pageTitle = title ? `${title} - minittu` : `minittu`;
+const pageDescription = description || "みにっつの超個人用忘備録";
+const image = ogImage
+  ? ogImage
+  : new URL("/og/default.png", Astro.site).toString();
 ---
 
 <!doctype html>
@@ -21,11 +29,22 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <SEO title={title ? `${title} - minittu` : `minittu`} description={description || "みにっつの超個人用忘備録"} />
+    <SEO
+      title={title ? `${title} - minittu` : `minittu`}
+      description={pageDescription}
+      openGraph={{
+        basic: {
+          title: pageTitle,
+          image: image,
+          type: isArticle ? "article" : "website",
+        },
+      }}
+      canonical={Astro.site}
+    />
   </head>
   <body class="flex min-h-screen flex-col bg-white text-zinc-900 antialiased">
     <Header />
-		<main class="container mx-auto w-full max-w-7xl grow px-4 pt-16">
+    <main class="container mx-auto w-full max-w-7xl grow px-4 pt-16">
       <slot />
     </main>
   </body>
