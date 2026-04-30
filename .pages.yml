@@ -51,3 +51,28 @@ content:
       - name: body
         label: Body
         type: rich-text
+
+  - name: pages
+    label: Pages
+    path: content/pages
+    format: yaml-frontmatter
+    type: collection
+    filename:
+      template: "{primary}.md"
+      field: create
+    extension: md
+
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: string
+        required: true
+
+      - name: body
+        label: Body
+        type: rich-text

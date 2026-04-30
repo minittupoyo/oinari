@@ -13,10 +13,13 @@
   },
   "dependencies": {
     "@iconify-json/tabler": "^1.2.33",
+    "@r4ai/remark-callout": "^0.6.2",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.10",
+    "astro-expressive-code": "^0.41.7",
     "astro-icon": "^1.1.5",
     "remark-breaks": "^4.0.0",
+    "remark-link-card-plus": "^0.7.4",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {

@@ -1,7 +1,9 @@
 ---
 import { render } from "astro:content";
-import { getPosts } from "../../lib/blog";
+import { getPosts, getPrevNextById } from "../../lib/blog";
 import Layout from "../../layouts/Layout.astro";
+import TOC from "../../components/TOC.astro";
+import PrevNextCard from "../../components/PrevNextCard.astro";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -17,20 +19,37 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const posts = await getPosts();
+const { prev, next } = getPrevNextById(posts, post.id);
+const { Content, headings } = await render(post);
 ---
 
 <Layout>
-  <section class="flex flex-col py-8 space-y-4">
-    <p class="text-sm text-zinc-500">{post.data.date.toLocaleDateString("ja-JP")}</p>
+  <section class="flex flex-col space-y-4 py-8">
+    <p class="text-sm text-zinc-500">
+      {post.data.date.toLocaleDateString("ja-JP")}
+    </p>
     <h1 class="text-4xl font-bold">{post.data.title}</h1>
-    <p class="text-lg text-zinc-700 font-medium">{post.data.description}</p>
+    <p class="text-lg font-medium text-zinc-700">{post.data.description}</p>
   </section>
-  <section class="flex flex-col py-8 border-t border-zinc-100">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      <div class="md:col-span-8 w-full min-w-full prose prose-zinc">
+  <section class="flex flex-col border-t border-zinc-100 py-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-12">
+      <div
+        class="prose prose-zinc w-full min-w-full leading-relaxed md:col-span-8"
+      >
         <Content />
       </div>
+      <div class="hidden md:col-span-4 md:block">
+        <div class="sticky top-24 block">
+          <TOC headings={headings} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="border-t border-zinc-100 py-8">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {prev ? <PrevNextCard post={prev} direction="prev" /> : <div />}
+      {next ? <PrevNextCard post={next} direction="next" /> : <div />}
     </div>
   </section>
 </Layout>

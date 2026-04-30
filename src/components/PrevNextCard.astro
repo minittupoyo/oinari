@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  direction: "prev" | "next";
+}
+
+const { post, direction } = Astro.props;
+
+const isPrev = direction === "prev";
+---
+
+<a
+  href={`/blog/${post.id}`}
+  class:list={[
+    "flex items-center gap-4 overflow-hidden rounded-sm border border-zinc-200 p-4 transition duration-300 hover:border-purple-500",
+    isPrev ? "flex-row" : "flex-row-reverse",
+  ]}
+>
+  <div
+    class="flex h-10 w-10 shrink items-center justify-center text-center text-2xl"
+  >
+    {post.data.emoji}
+  </div>
+
+  <div
+    class:list={[
+      "flex flex-1 flex-col gap-1",
+      isPrev ? "text-left" : "text-right",
+    ]}
+  >
+    <p class="text-xs text-zinc-400">
+      {isPrev ? "← 前の記事" : "次の記事 →"}
+    </p>
+
+    <h3 class="line-clamp-2 text-lg font-bold">
+      {post.data.title}
+    </h3>
+
+    <p class="text-sm text-zinc-600">
+      {post.data.description}
+    </p>
+  </div>
+</a>

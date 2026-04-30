@@ -1,0 +1,31 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import TOC from "../components/TOC.astro";
+
+const page = await getEntry("pages", "about");
+
+if (!page) {
+  throw new Error("404");
+}
+
+const { Content, headings } = await render(page);
+---
+<Layout>
+  <section class="flex flex-col py-8 space-y-4">
+    <h1 class="text-4xl font-bold">{page.data.title}</h1>
+    <p class="text-lg text-zinc-700 font-medium">{page.data.description}</p>
+  </section>
+  <section class="flex flex-col py-8 border-t border-zinc-100">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="md:col-span-8 w-full min-w-full prose prose-zinc">
+        <Content />
+      </div>
+      <div class="hidden md:block md:col-span-4">
+        <div class="block sticky top-24">
+          <TOC headings={headings} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
