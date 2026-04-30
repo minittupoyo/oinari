@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 type Post = CollectionEntry<"blog">;
 
 export async function getPosts() {
-  const posts = await getCollection("blog", ({ data }) => !import.meta.env.PROD ? data.draft !== true:true)
+  const posts = await getCollection("blog", ({ data }) => import.meta.env.PROD ? data.draft !== true:true)
   return posts.sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf())
 }
 
