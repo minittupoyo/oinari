@@ -11,7 +11,7 @@ if (!page) {
 
 const { Content, headings } = await render(page);
 ---
-<Layout>
+<Layout title="About" description="このブログについて">
   <section class="flex flex-col py-8 space-y-4">
     <h1 class="text-4xl font-bold">{page.data.title}</h1>
     <p class="text-lg text-zinc-700 font-medium">{page.data.description}</p>
