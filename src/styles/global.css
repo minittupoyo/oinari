@@ -3,8 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --default-font-family:
-    var(--font-inter), var(--font-noto-sans-jp), sans-serif;
+  --default-font-family: "Inter Variable", "Noto Sans JP Variable", sans-serif;
 }
 
 html {

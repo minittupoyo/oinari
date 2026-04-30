@@ -18,24 +18,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  fonts: [
-    {
-      provider: fontProviders.fontsource(),
-      name: "Inter",
-      weights: [400,500,700,900],
-      cssVariable: "--font-inter",
-    },
-    {
-      provider: fontProviders.fontsource(),
-      name: "Noto Sans JP",
-      weights: [400,500,700,900],
-      cssVariable: "--font-noto-sans-jp",
-    },
-  ],
   image: {
-    domains: ["storage.minittu.net","s3.ap-northeast-1.wasabisys.com"]
+    domains: ["storage.minittu.net", "s3.ap-northeast-1.wasabisys.com"],
   },
   markdown: {
-    remarkPlugins: [remarkBreaks, [remarkLinkCard, { cache: true }], remarkCallout]
-  }
+    remarkPlugins: [
+      remarkBreaks,
+      [remarkLinkCard, { cache: true }],
+      remarkCallout,
+    ],
+  },
 });
