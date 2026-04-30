@@ -11,21 +11,12 @@ const { post } = Astro.props;
 
 <a
   href={`/blog/${post.id}`}
-  class="flex flex-col overflow-hidden rounded-sm border border-zinc-200"
+  class="flex flex-row items-center overflow-hidden rounded-sm border border-zinc-200 p-4 gap-4"
 >
-  {
-    post.data.cover && (
-      <div class="flex aspect-video items-center justify-center">
-        <Image
-          src={post.data.cover}
-          alt={post.data.title}
-          class="h-full w-full object-center"
-          inferSize
-        />
-      </div>
-    )
-  }
-  <div class="flex flex-col gap-2 p-4">
+  <div class="flex h-10 w-10 shrink items-center justify-center text-center text-2xl">
+    {post.data.emoji}
+  </div>
+  <div class="flex flex-col gap-1 ml-2 flex-1">
     <p class="text-sm text-zinc-500">
       {post.data.date.toLocaleDateString("ja-JP")}
     </p>

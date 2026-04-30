@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import { fontProviders } from "astro/config";
+import remarkBreaks from "remark-breaks";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -29,5 +30,8 @@ export default defineConfig({
   ],
   image: {
     domains: ["storage.minittu.net","s3.ap-northeast-1.wasabisys.com"]
+  },
+  markdown: {
+    remarkPlugins: [remarkBreaks]
   }
 });

@@ -1,0 +1,36 @@
+---
+import { render } from "astro:content";
+import { getPosts } from "../../lib/blog";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    params: {
+      id: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout>
+  <section class="flex flex-col py-8 space-y-4">
+    <p class="text-sm text-zinc-500">{post.data.date.toLocaleDateString("ja-JP")}</p>
+    <h1 class="text-4xl font-bold">{post.data.title}</h1>
+    <p class="text-lg text-zinc-700 font-medium">{post.data.description}</p>
+  </section>
+  <section class="flex flex-col py-8 border-t border-zinc-100">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="md:col-span-8 w-full min-w-full prose prose-zinc">
+        <Content />
+      </div>
+    </div>
+  </section>
+</Layout>

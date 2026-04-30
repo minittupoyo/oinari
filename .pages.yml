@@ -35,10 +35,10 @@ content:
         type: string
         list: true
 
-      - name: cover
-        label: Cover Image
-        type: image
-        required: false
+      - name: emoji
+        label: Emoji
+        type: string
+        default: "😎"
 
       - name: draft
         label: Draft
