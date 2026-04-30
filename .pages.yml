@@ -3,11 +3,12 @@ media:
   output: ../images
   rename: random
 
-collections:
+content:
   - name: blog
     label: Blog
-    path: src/content/blog
-    format: frontmatter
+    path: content/blog
+    format: yaml-frontmatter
+    type: collection
     extension: md
 
     fields:
