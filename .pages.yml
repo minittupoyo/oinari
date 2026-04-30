@@ -9,6 +9,9 @@ content:
     path: content/blog
     format: yaml-frontmatter
     type: collection
+    filename:
+      template: "{primary}.md"
+      field: create
     extension: md
 
     fields:
