@@ -51,6 +51,11 @@ content:
       - name: body
         label: Body
         type: rich-text
+    actions:
+      - name: Deploy
+        label: デプロイ
+        scope: entry
+        workflow: pages-build.yml
 
   - name: pages
     label: Pages
@@ -76,3 +81,8 @@ content:
       - name: body
         label: Body
         type: rich-text
+
+actions:
+  - name: Deploy
+    label: デプロイ
+    workflow: pages-build.yml
