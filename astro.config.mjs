@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import { fontProviders } from "astro/config";
 import remarkBreaks from "remark-breaks";
 import remarkLinkCard from "remark-link-card-plus";
 import remarkCallout from "@r4ai/remark-callout";
