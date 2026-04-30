@@ -26,6 +26,9 @@ content:
         label: Date
         type: date
         required: true
+        options:
+          time: true
+          format: yyyy-MM-dd'T'HH:mm
 
       - name: tags
         label: Tags
