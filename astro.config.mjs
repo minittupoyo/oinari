@@ -19,7 +19,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), expressiveCode(), react(), markdoc(), ...(process.env.PROD ? [keystatic()] : []), mdx()],
+  integrations: [icon(), expressiveCode(), react(), markdoc(), ...(import.meta.env.PROD ? [] : [keystatic()]), mdx()],
   site: "https://blog.minittu.net",
   vite: {
     plugins: [tailwindcss()]

@@ -104,9 +104,8 @@ export default defineContentConfig({
 </template>
 ```
 
-::callout{icon="i-tabler-info-circle" color="info"}
-デザインに関しては素人なのでこのくらいで。~~(つーか全部素人だろ)~~
-::
+> [!info]
+> デザインに関しては素人なのでこんな感じで(~~つーか全部素人だろ~~)
 
 ## 最後に
 

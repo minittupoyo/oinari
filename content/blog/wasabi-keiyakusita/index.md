@@ -43,7 +43,7 @@ rclone config
 次にenv_authを聞かれます。これはそのままEnter
 次にaccess_key_idが聞かれます。取得するために管理画面に行って
 
-![image.png](../images/image-1.png)
+![image.png](../../images/image-1.png)
 
 アクセスキーとシークレットを発行して、アクセスキーをはっつけてください。
 続いてのsecret_access_keyも同様にはっつけます。
@@ -61,7 +61,7 @@ rclone ls <設定した名前>:
 
 を実行してファイルがある場合は一覧表示されます。エラーがなければOKです。
 
-![image.png](../images/image-2.png)
+![image.png](../../images/image-2.png)
 
 ### マウントしてみる
 

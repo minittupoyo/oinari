@@ -99,7 +99,7 @@ content:
 
 編集画面はこんな感じになる。
 
-![image.png](../images/image.png)
+![image.png](../../images/image.png)
 
 レイアウトとかを変えれるオプションもあるので、それを使えばもっと使いやすくなるんだろう。
 
